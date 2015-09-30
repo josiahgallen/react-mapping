@@ -32614,6 +32614,9 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var catRows = this.props.cats.map(function (cat) {
+			return React.createElement(CatComponent, { cat: cat });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32648,7 +32651,11 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					catRows
+				)
 			)
 		);
 	}
@@ -32701,6 +32708,9 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var ProductRows = this.props.products.map(function (product) {
+			return React.createElement(ProductComponent, { product: product });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32740,7 +32750,11 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					ProductRows
+				)
 			)
 		);
 	}
@@ -32761,42 +32775,42 @@ module.exports = React.createClass({
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('name')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('team')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('attempts')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('completions')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('yards')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('touchdowns')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('interceptions')
 			),
 			React.createElement(
 				'td',
 				null,
-				'-'
+				this.props.qb.get('sacks')
 			)
 		);
 	}
@@ -32812,6 +32826,9 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var QBRows = this.props.quarterbacks.map(function (qb) {
+			return React.createElement(QuarterbackComponent, { qb: qb });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32871,7 +32888,11 @@ module.exports = React.createClass({
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				React.createElement(
+					'tbody',
+					null,
+					QBRows
+				)
 			)
 		);
 	}
@@ -32885,7 +32906,13 @@ var React = require('react');
 module.exports = React.createClass({
 	displayName: 'exports',
 
-	render: function render() {}
+	render: function render() {
+		return React.createElement(
+			'li',
+			null,
+			this.props.task.get('description')
+		);
+	}
 });
 
 },{"react":159}],171:[function(require,module,exports){
@@ -32898,6 +32925,9 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var todoRow = this.props.todos.map(function (task) {
+			return React.createElement(TodoComponent, { task: task });
+		});
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -32905,6 +32935,11 @@ module.exports = React.createClass({
 				'h1',
 				null,
 				'Todos'
+			),
+			React.createElement(
+				'ul',
+				null,
+				todoRow
 			)
 		);
 	}
